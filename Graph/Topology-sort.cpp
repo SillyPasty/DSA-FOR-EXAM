@@ -53,12 +53,10 @@ void topSort()
                 int flag = 0;
                 adjMatrix[cur][i] = 0;
                 for (int j = 0; j < 11; j++)
-                {
                     if (adjMatrix[j][i])
                         flag = 1;
-                }
                 if (!flag)
-                    queue[end++] = i;   
+                    queue[end++] = i;
             }
         }
     }

@@ -27,13 +27,13 @@ int main()
 {
     char x, y;
     int a;
-    scanf("%c,%c,%d",&x, &y, &a);
-    adjMatrix[int(x - 'A')][int(y - 'A')] = a;
-    adjMatrix[int(y - 'A')][int(x - 'A')] = a;
+    // scanf("%c,%c,%d",&x, &y, &a);
+    // adjMatrix[int(x - 'A')][int(y - 'A')] = a;
+    // adjMatrix[int(y - 'A')][int(x - 'A')] = a;
     for (int i = 0; i < 10; i++)
         p[i] = i;
     kruskal();
-    //system("pause");
+    system("pause");
     return 0;
 }
 
