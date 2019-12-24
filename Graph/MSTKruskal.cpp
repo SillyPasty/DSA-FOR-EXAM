@@ -32,7 +32,7 @@ int main()
 
 int findS(int a)
 {
-    return setP[a] == a ? a : a = findS(setP[a]);
+    return setP[a] == a ? a : findS(setP[a]);
 }
 
 void joint(int a, int b)

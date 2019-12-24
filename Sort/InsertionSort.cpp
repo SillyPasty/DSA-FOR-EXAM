@@ -1,4 +1,4 @@
-/* A type of Selection Sorting
+/* A type of Inserting Sorting
  * By Yubo Wang 2019.12.23
  */
 #include <iostream>
@@ -6,7 +6,7 @@
 #include <ctime>
 using namespace std;
 
-void selectionSort(int a[], int len);
+void insertionSort(int a[], int len);
 
 int main()
 {
@@ -18,21 +18,20 @@ int main()
     for (int i = 0; i < len; i++)
         cout << args[i] << ' ';
     cout << endl;
-    selectionSort(args, len);
+    insertionSort(args, len);
     system("pause");
     return 0;
 }
 
-void selectionSort(int a[], int len)
+void insertionSort(int a[], int len)
 {
-    for(int i = 0; i < len - 1; i++)
+    for (int i = 1; i < len; i++)
     {
-        int flg = i;
-        for(int j = i; j < len; j++)
-            if(a[j] < a[flg])
-                flg = j;
-        swap(a[i], a[flg]);
+        int j, cur = a[i];
+        for (j = i; 0 < j && cur < a[j - 1]; j--)
+            a[j] = a[j - 1];
+        a[j] = cur;
     }
-    for(int i = 0; i < len; i++)
+    for (int i = 0; i < len; i++)
         cout << a[i] << ' ';
 }

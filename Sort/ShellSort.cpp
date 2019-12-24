@@ -1,43 +1,43 @@
-#include <cstdio>
-#include <cstdlib>
+/* A type of Inserting Sorting
+ * By Yubo Wang 2019.12.23
+ */
 #include <iostream>
+#include <cstdlib>
+#include <algorithm>
+#include <ctime>
 using namespace std;
 
-void shellSort(int *input_array, int n);
+void shellSort(int a[], int len);
 
 int main()
 {
-    int n, input_array[200] = {0};
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++)
-        scanf("%d,", &input_array[i]);
-    shellSort(input_array, n);
-    //system("pause");
+    srand((unsigned)time(NULL));
+    int len = 20;
+    int args[len];
+    for (int i = 0; i < len; i++)
+        args[i] = rand();
+    for (int i = 0; i < len; i++)
+        cout << args[i] << ' ';
+    cout << endl;
+    shellSort(args, len);
+    system("pause");
     return 0;
 }
 
-void shellSort(int *input_array, int n)
+void shellSort(int a[], int len)
 {
-    for(int d = n / 2; d > 0; d /= 2)
+    int h = len / 2;
+    while (h)
     {
-        for(int i = 0; i < d; i++)
+        for (int i = h; i < len; i++)
         {
-            for(int j = i; j < n; j += d)
-            {
-                int k, cur = input_array[j];
-                for(k = j - d; 0 <= k && input_array[k] < cur; k -= d)
-                    input_array[k + d] = input_array[k];
-                input_array[k + d] = cur;
-            }
+            int j, cur = a[i];
+            for (j = i; h <= j && cur < a[j - h]; j -= h)
+                a[j] = a[j - h];
+            a[j] = cur;
         }
-        for(int k = 0; k < n; k++)
-            cout << input_array[k] << ',';
-        cout << '\n';
+        h /= 2;
     }
-
+    for (int i = 0; i < len; i++)
+        cout << a[i] << ' ';
 }
-
-/*
-10
-49,38,65,97,76,13,27,50,2,8,
-*/

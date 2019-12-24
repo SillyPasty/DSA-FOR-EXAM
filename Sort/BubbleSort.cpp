@@ -1,12 +1,13 @@
-/* A type of Selection Sorting
+/* A type of Exchange Sorting
  * By Yubo Wang 2019.12.23
  */
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
 #include <ctime>
 using namespace std;
 
-void selectionSort(int a[], int len);
+void bubbleSort(int a[], int len);
 
 int main()
 {
@@ -18,21 +19,17 @@ int main()
     for (int i = 0; i < len; i++)
         cout << args[i] << ' ';
     cout << endl;
-    selectionSort(args, len);
+    bubbleSort(args, len);
     system("pause");
     return 0;
 }
 
-void selectionSort(int a[], int len)
+void bubbleSort(int a[], int len)
 {
-    for(int i = 0; i < len - 1; i++)
-    {
-        int flg = i;
-        for(int j = i; j < len; j++)
-            if(a[j] < a[flg])
-                flg = j;
-        swap(a[i], a[flg]);
-    }
+    for(int i = len - 1; 0 < i; i--)
+        for(int j = 0; j < i; j++)
+            if(a[j + 1] < a[j])
+                swap(a[j + 1], a[j]);
     for(int i = 0; i < len; i++)
         cout << a[i] << ' ';
 }
